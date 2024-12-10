@@ -55,5 +55,16 @@ class SignInForm(forms.Form):
 
     password=forms.CharField(widget=forms.TextInput(attrs={"class":"form-control"}))
 
+# class DeliveryReceiptForrm(forms.Form):
 
-    
+
+#     receipt_number=forms.IntegerField(widget=forms.TextInput(attrs={"class":"form-control"}))
+
+#     date=forms.DateField(widget=forms.DateInput(attrs={"class":"form-control"}))
+
+#     company_name=forms.IntegerField(widget=forms.TextInput(attrs={"class":"form-control"}))
+
+#     email=forms.EmailField(widget=forms.EmailInput(attrs={"class":"form-control"}))
+
+#     phone_number=forms.IntegerField(widget=forms.TextInput(attrs={"class":"form-control"}))
+

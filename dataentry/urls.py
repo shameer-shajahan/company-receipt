@@ -30,6 +30,7 @@ urlpatterns = [
     path('manage-items/', ManageItemsView.as_view(), name='manage_items'),
     path('manage-items/pdf/', generate_items_pdf, name='generate_items_pdf'),
     path('manage-items/email/', send_items_email, name='send_items_email'),
+    path('data/<int:pk>/remove',views.DataDeleteView.as_view(),name="delete"),
 
  # Correct usage
     # path('receipt/',views.CreateDeliveryReceiptView.as_view(), name='create_receipt'),  # Correct usage

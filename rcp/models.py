@@ -25,6 +25,8 @@ class DeliveryReceipt(models.Model):
 
     logo=models.ImageField(upload_to="commpont_logo",null=True,blank=True)
 
+    owner=models.ForeignKey(User,on_delete=models.CASCADE)
+
     def __str__(self):
 
         return self.receipt_number
@@ -32,7 +34,7 @@ class DeliveryReceipt(models.Model):
 
 class Item(models.Model):
 
-    receipt = models.ForeignKey(User, on_delete=models.CASCADE)
+    receipt = models.ForeignKey(User,on_delete=models.DO_NOTHING)
 
     serial_number = models.IntegerField()
 

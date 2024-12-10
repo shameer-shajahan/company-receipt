@@ -4,12 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Delivery Receipt</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
-
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,6 +32,11 @@
             margin-top: 20px;
         }
 
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
         table,
         th,
         td {
@@ -109,7 +111,12 @@
         .child p {
             margin: 5px 0;
         }
+
+        .tw{
+            border: 1px solid white;
+        }
     </style>
+
 </head>
 
 <body>
@@ -118,31 +125,33 @@
         <h1>Delivery Receipt</h1>
     </div>
 
-    <div class="row">
-        <!-- Logo Section -->
-        <div class="col-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Logo</h5>
-                </div>
-            </div>
-        </div>
 
-        <div class="parent">
-                  <!-- Company Details -->
-            <div class="child">
-                <p><strong>Company Name:</strong> Example Corp</p>
-                <p><strong>Address:</strong> 123 Main Street, City</p>
-                <p><strong>Email:</strong> contact@example.com</p>
-                <p><strong>Phone:</strong> +1 234 567 890</p>
-            </div>
-            <!-- Receipt Details -->
-            <div class="child">
-                <p><strong>Receipt Number:</strong> #12345</p>
-                <p><strong>Date:</strong> 08 Dec 2024</p>
-            </div>
-        </div>
-    </div>
+  
+<div class="content">
+    <table class="tw">
+        <tr class="tw">
+                    <!-- Logo Section -->
+            <td class="tw">
+                logo
+            </td> 
+                    <!-- Company Details -->
+            <td class="tw">
+                <p><strong>Company Name:</strong> </p>
+                <p><strong>Address:</strong> </p>
+                <p><strong>Email:</strong> </p>
+                <p><strong>Phone:</strong> </p>
+            </td>
+                 <!-- Receipt Details -->
+            <td class="tw">
+                <p><strong>Receipt Number:</strong> </p>
+                <p><strong>Date:</strong> </p>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
 
 
     <!-- Item Details -->
@@ -159,13 +168,13 @@
                 </tr>
             </thead>
             <tbody>
-                {% for item in items %}
+                {% for i in items %}
                 <tr>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.item_description }}</td>
-                    <td>{{ item.quantity }}</td>
-                    <td>{{ item.uom }}</td>
-                    <td>{{ item.remarks }}</td>
+                    <td>{{ i.serial_number }}</td>
+                    <td>{{ i.item_description }}</td>
+                    <td>{{ i.quantity }}</td>
+                    <td>{{ i.uom }}</td>
+                    <td>{{ i.remarks }}</td>
                 </tr>
                 {% empty %}
                 <tr>
@@ -177,21 +186,31 @@
     </div>
 
 
+    <div class="content">
+        <table class="tw">
+            <tr class="tw"> 
+                        <!-- Company Details -->
+                <td class="tw">
+                    <span> Delevery : </span><br>
+                    <span> Address :</span><br>
+                    <span> email :</span><br>
+                    <span> Phone :</span><br>
+                    <span> Signature :</span><br>
+                </td>
+                     <!-- Receipt Details -->
+                <td class="tw">
+                    <span> Receiver :</span><br>
+                    <span> Address :</span><br>
+                    <span> email :</span><br>
+                    <span> Phone :</span><br>
+                    <span> Signature :</span><br>
 
-    <div class="row">
-        <div class="col-6">
-            <p> Delevery :</p>
-            <p> Address :</p>
-            <p> email :</p>
-            <p> Phone :</p>
-        </div>
-        <div class="col-6">
-            <p> Receiver :</p>
-            <p> Address :</p>
-            <p> email :</p>
-            <p> Phone :</p>
-        </div>
+                </td>
+            </tr>
+    
+        </table>
     </div>
+
 
  
     </div>

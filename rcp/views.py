@@ -1,6 +1,6 @@
 # delivery_receipt/views.py
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 
 from django.views import View
 from django.views.generic.edit import FormView
@@ -70,7 +70,7 @@ def generate_items_pdf(request):
     """
     View to generate and return the PDF for items.
     """
-    items = Item.objects.all()
+    items = Item.objects.filter(receipt=request.user)
     context = {
         'items': items,
     }
@@ -126,7 +126,7 @@ class SignUpView(View):
 
     form_class=SignUpForm
 
-    def get(self,request,*arg,**kwargs):
+    def get(self,request,*args,**kwargs):
 
         form_instance=self.form_class()
 
@@ -201,14 +201,13 @@ class CreateDeliveryReceiptView(FormView):
 
     form_class=ItemForm
 
-
     def get(self,request,*args,**kwargs):
 
         search_text=request.GET.get("filter")
 
         form_instance=self.form_class
 
-        qs=Item.objects.all()        
+        qs=Item.objects.filter(receipt=request.user)        
 
         return render(request,self.template_name,{"data":qs,"form":form_instance })
     
@@ -227,4 +226,15 @@ class CreateDeliveryReceiptView(FormView):
             return redirect("create_receipt")
         
         return render(request,self.template_name,{"form":form_instance})
+
+class DataDeleteView(View):
+
+    def get(self,request,*args,**kwargs):
+
+        id=kwargs.get("pk")
+
+        Item.objects.get(id=id).delete()
+
+        return redirect("create_receipt")
+    
 
